@@ -1,12 +1,14 @@
 import React from "react";
+import ProductDetail from "../../components/ProductDetail/ProductDetail";
 import MenuHeader from "../../components/MenuHeader/MenuHeader";
 
-const Home = () => {
+const Product = () => {
   return (
     <>
       <MenuHeader />
+      <ProductDetail />
     </>
   );
 };
 
-export default Home;
+export default Product;

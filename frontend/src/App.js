@@ -1,19 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import List from "./components/List";
-import ProductDetail from "./components/ProductDetail";
+import { RoutesWithNotFound } from "./components/NotFound/RoutesWithNotFound";
+import { PublicRoutes } from "./models/routes";
+import Product from "./pages/Product";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/items" element={<List />}>
-          <Route path="items/search" element={<List />} />
-        </Route>
-          <Route path="/items/:id" element={<ProductDetail />} />
-      </Routes>
+      <RoutesWithNotFound>
+        <Route exact path={PublicRoutes.HOME} element={<Home />} />
+        <Route path={PublicRoutes.LIST_OF_PRODUCTS} element={<List />} />
+        <Route path={PublicRoutes.PRODUCT_DETAIL} element={<Product />} />
+      </RoutesWithNotFound>
     </BrowserRouter>
   );
 }

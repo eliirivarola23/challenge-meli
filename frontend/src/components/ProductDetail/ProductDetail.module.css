@@ -1,0 +1,38 @@
+.container_productDetail {
+  padding: 10px;
+}
+.productDetail_photo {
+  text-align: center;
+}
+.productDetail_photo > img {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+}
+
+.productDetail_price {
+  font-weight: 600;
+  font-size: 32px;
+}
+.productDetail_detail {
+  padding: 5px;
+}
+.productDetail_detail h4 {
+  font-size: 20px;
+}
+.productDetail_detail > button {
+  width: 100%;
+  padding: 5px;
+}
+
+@media (min-width: 460px) {
+  .productDetail_container_detail {
+    display: flex;
+    justify-content: space-between;
+    max-width: 660px;
+  }
+
+  .productDetail_detail {
+    width: 35%;
+  }
+}

@@ -1,0 +1,10 @@
+.container_input {
+  display: flex;
+}
+
+.container_input input {
+  all: unset;
+  padding: 5px;
+  background-color: var(--white);
+  width: 100%;
+}

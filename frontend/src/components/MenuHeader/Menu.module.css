@@ -1,0 +1,15 @@
+.container_menu {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: container-box;
+}
+.container_menu > .container_menu_filters {
+  min-width: 200px;
+  width: 600px;
+}
+.container_menu img {
+  width: 50px;
+  margin-right: 15px;
+}

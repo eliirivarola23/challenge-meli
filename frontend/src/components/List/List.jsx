@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeaderProductDetail } from "../ProductDetail/components/HeaderProductDetail";
 import MenuHeader from "../MenuHeader/MenuHeader";
 import styles from "./List.module.css";
+import { ProductSearch } from "../../services/ProductSearch";
 
 const List = () => {
+  useEffect(() => {
+    (async () => {
+      await ProductSearch.createUser();
+    })();
+    return () => {};
+  }, []);
+
   return (
     <>
       <MenuHeader />

@@ -2,14 +2,18 @@ import React from "react";
 import InputSearch from "../InputSearch/InputSearch";
 import styles from "./Menu.module.css";
 import Logo from "../../assets/logomeli.png";
+import { Link } from "react-router-dom";
+import { PublicRoutes } from "../../models/routes";
 
-const MenuHeader = ({ customFilters, children }) => {
+const MenuHeader = ({ customFilters, isSearch = true, children }) => {
   return (
     <div className={styles.container_menu}>
-      <img src={Logo} alt="logo" />
+      <Link to={PublicRoutes.HOME}>
+        <img src={Logo} alt="logo" />
+      </Link>
       <div className={styles.container_menu_filters}>
         {customFilters}
-        <InputSearch type="search" />
+        {isSearch && <InputSearch type="search" />}
       </div>
       {children}
     </div>

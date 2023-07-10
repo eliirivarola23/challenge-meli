@@ -1,5 +1,7 @@
 .container_productDetail {
   padding: 10px;
+  background-color: var(--white);
+  max-width: 650px;
 }
 .productDetail_photo {
   text-align: center;
@@ -13,6 +15,10 @@
 .productDetail_price {
   font-weight: 600;
   font-size: 32px;
+}
+.productDetail_detail > * {
+  margin: 0;
+  margin-bottom: 15px;
 }
 .productDetail_detail {
   padding: 5px;
@@ -33,6 +39,7 @@
   }
 
   .productDetail_detail {
-    width: 35%;
+    width: auto;
+    padding: 15px;
   }
 }

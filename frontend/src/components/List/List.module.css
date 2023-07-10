@@ -1,0 +1,21 @@
+.container_list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.container_list > div {
+  display: flex;
+  justify-content: center;
+}
+
+.container_list > div > div {
+  border-bottom: 1px solid var(--grey);
+  background-color: var(--white);
+  margin-bottom: 5px;
+}
+
+.container_list > div > div > img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}

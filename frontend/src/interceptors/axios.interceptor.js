@@ -27,7 +27,7 @@ export const AxiosInterceptor = async ({ endpoint, method, params }) => {
     }
   );
 
-  return await axios({
+  await axios({
     method: method,
     url: endpoint,
     data: params,

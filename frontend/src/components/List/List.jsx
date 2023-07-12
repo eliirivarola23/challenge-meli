@@ -14,7 +14,7 @@ const List = () => {
 
   return (
     <>
-      <MenuHeader />
+      {/* <MenuHeader /> */}
       <div className={styles.container_list}>
         {[1, 2, 3, 4, 5, 6].map((item, index) => (
           <div key={index}>

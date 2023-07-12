@@ -2,11 +2,15 @@ import axios from "axios";
 import { getValidationError } from "../helpers/get-validation-error";
 import { SnackbarUtilities } from "../helpers/snackbar-manager";
 
-export const AxiosInterceptor = async ({ endpoint, method, params }) => {
+export const AxiosInterceptor = async ({ endpoint, method, params,  }) => {
   const updateHeader = (request) => {
-    const author = { name: "Eliana", lastName: "rivarola" };
+    const author = {
+      name: process.env.REACT_APP_API_KEY,
+      lastName: process.env.REACT_APP_SECRET_TOKEN,
+    };
+
     const newHeaders = {
-      Authorization: author,
+      Authorization: btoa(JSON.stringify(author)),
       "Content-Type": "application/json",
     };
     request.headers = newHeaders;
@@ -29,7 +33,7 @@ export const AxiosInterceptor = async ({ endpoint, method, params }) => {
 
   await axios({
     method: method,
-    url: endpoint,
+    url: `${process.env.REACT_APP_HOST}${endpoint}`,
     data: params,
   });
 };

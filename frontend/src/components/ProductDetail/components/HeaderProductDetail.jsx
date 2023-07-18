@@ -3,8 +3,9 @@ import styles from '../ProductDetail.module.css';
 import Button from '../../Button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PublicRoutes } from '../../../models/routes';
+import ShippingImage from '../../../assets/shipping.png';
 
-const HeaderProductDetail = ({ customStyles, photo, id, sold_quantity, condition, price, title = '', isView, children }) => {
+const HeaderProductDetail = ({ customStyles, photo, free_shipping, id, sold_quantity, condition, price, title = '', isView, children }) => {
   const navigate = useNavigate();
   const locations = useLocation();
 
@@ -25,9 +26,10 @@ const HeaderProductDetail = ({ customStyles, photo, id, sold_quantity, condition
             {condition === 'new' ? 'Nuevo' : 'Usado'} | {sold_quantity && `${sold_quantity} vendidos`}
           </p>
         )}
-        {!isView && price.decimals && (
+
+        {!isView && (
           <p className={styles.productDetail_price} onClick={handleNavigate}>
-            ${price.decimals}
+            ${price.decimals || ''} {free_shipping && <img src={ShippingImage} alt="" />}
           </p>
         )}
         <h4 onClick={handleNavigate}>{title}</h4>

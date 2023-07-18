@@ -4,16 +4,17 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--grey);
+  background-color: var(--greyLigth);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
 :root {
-  --primary: #fff159;
+  --primary: #ffe600;
+  --darkGray: #333333;
   --white: #ffff;
-  --darkGray: #494848;
-  --grey: #eeeeee;
-  --blue: #5285fa;
+  --grey: #999999;
+  --blue: #3483fa;
+  --greyLigth: #eeeeee;
 }

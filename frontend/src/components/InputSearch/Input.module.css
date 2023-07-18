@@ -8,3 +8,8 @@
   background-color: var(--white);
   width: 100%;
 }
+.container_input > button > img {
+  width: 10px;
+  margin: 0;
+  padding: 0 5px;
+}

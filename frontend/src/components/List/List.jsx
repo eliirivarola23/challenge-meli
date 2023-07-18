@@ -49,13 +49,13 @@ const List = () => {
 
   return (
     <>
-      <Breadcrumb crumbs={categories} />
+      {!loading && <Breadcrumb crumbs={categories} />}
       <div className={styles.container_principal_list}>
         <div className={styles.container_list}>
           <ContainerHeaderProductDetail loading={loading} searchParams={searchParams} data={data}>
-            {data?.items?.map(({ picture, title, price, id }) => (
+            {data?.items?.map(({ picture, title, price, id, free_shipping }) => (
               <div className={styles.container_item_list} key={id}>
-                <HeaderProductDetail customStyles={styles.container_item} photo={picture} title={title} price={price} id={id} />
+                <HeaderProductDetail customStyles={styles.container_item} free_shipping={free_shipping} photo={picture} title={title} price={price} id={id} />
               </div>
             ))}
           </ContainerHeaderProductDetail>

@@ -4,7 +4,7 @@ import Button from '../../Button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PublicRoutes } from '../../../models/routes';
 
-const HeaderProductDetail = ({ photo, id, price, title = '', isView, children }) => {
+const HeaderProductDetail = ({ customStyles, photo, id, sold_quantity, condition, price, title = '', isView, children }) => {
   const navigate = useNavigate();
   const locations = useLocation();
 
@@ -15,13 +15,24 @@ const HeaderProductDetail = ({ photo, id, price, title = '', isView, children })
 
   return (
     <>
-      <div className={styles.productDetail_photo} onClick={handleNavigate}>
+      <div className={`${customStyles || styles.productDetail_photo}`} onClick={handleNavigate}>
         <img src={photo} alt={`imagen de ${title}`} />
       </div>
       <div className={styles.productDetail_detail}>
+        {isView && (
+          <p>
+            {' '}
+            {condition === 'new' ? 'Nuevo' : 'Usado'} | {sold_quantity && `${sold_quantity} vendidos`}
+          </p>
+        )}
+        {!isView && price.decimals && (
+          <p className={styles.productDetail_price} onClick={handleNavigate}>
+            ${price.decimals}
+          </p>
+        )}
         <h4 onClick={handleNavigate}>{title}</h4>
 
-        {price.decimals && (
+        {isView && price.decimals && (
           <p className={styles.productDetail_price} onClick={handleNavigate}>
             ${price.decimals}
           </p>

@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   padding: 10px;
-  box-sizing: container-box;
 }
 .container_menu > .container_menu_filters {
   min-width: 200px;

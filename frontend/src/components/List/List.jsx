@@ -55,7 +55,7 @@ const List = () => {
           <ContainerHeaderProductDetail loading={loading} searchParams={searchParams} data={data}>
             {data?.items?.map(({ picture, title, price, id }) => (
               <div className={styles.container_item_list} key={id}>
-                <HeaderProductDetail photo={picture} title={title} price={price} id={id} />
+                <HeaderProductDetail customStyles={styles.container_item} photo={picture} title={title} price={price} id={id} />
               </div>
             ))}
           </ContainerHeaderProductDetail>

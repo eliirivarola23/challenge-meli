@@ -1,19 +1,22 @@
 .container_Button {
   cursor: pointer;
   border: none;
-  background: white;
-  color: var(--darkGray);
-  border-radius: 5px;
+  color: var(--white);
+  border-radius: 1px;
   padding: 10px;
   outline: 1px solid var(--grey);
+  background-color: var(--blue);
 }
 
 .secondary {
   border-radius: 0;
   border-left: 1px solid var(--grey);
+  background-color: var(--white);
+  color: var(--darkGray);
 }
 
 button:hover {
   background-color: var(--grey);
   outline: 1px solid var(--white);
+  color: var(--darkGray);
 }

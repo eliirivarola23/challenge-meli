@@ -1,70 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Test Mercado Libre - React y Node.js
+Este proyecto es un Challenge de Mercado Libre que consiste en una aplicación web desarrollada utilizando React en el frontend y Node.js con express en el backend.
 
-## Available Scripts
+## Instalación
+Para instalar las dependencias del proyecto, ejecuta el siguiente comando en la raíz del proyecto:
 
-In the project directory, you can run:
+```bash
+  npm install
+```
+## Levantar el Frontend
+Para levantar el frontend de la aplicación, dirígete al directorio frontend y ejecuta el siguiente comando: 
 
-### `npm start`
+```bash
+cd frontend
+```
+Luego crea un archivo .env y agregale la siguiente variable de entorno
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`REACT_APP_HOST=http://localhost:3001/api/v1/`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Y por último:
+```bash
+npm start
+```
+Esto iniciará el servidor de desarrollo y la aplicación estará disponible en http://localhost:3000/.
 
-### `npm test`
+## Levantar el Backend
+Para levantar el backend de la aplicación, asegúrate de estar en la raíz del proyecto. Crea un archivo .env y agregale la siguiente variable de entorno
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`PORT=3001`
 
-### `npm run build`
+ y ejecuta el siguiente comando:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+nodemon
+```
+El servidor backend se ejecutará en http://localhost:3001/.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Descripción del Proyecto
+El proyecto es una implementación básica de un sitio de búsqueda de productos, similar al sitio de Mercado Libre. La aplicación permite a los usuarios buscar productos a través de una barra de búsqueda y muestra los resultados obtenidos de la API de Mercado Libre.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Estructura del Proyecto
+El proyecto está organizado de la siguiente manera:
 
-### `npm run eject`
+- frontend: Contiene el código fuente del frontend desarrollado con React.
+- Carpeta raíz:  Contiene el código fuente del backend desarrollado con Node.js.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Dependencias Utilizadas
+A continuación, se enumeran las principales dependencias utilizadas en el proyecto:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- React: Biblioteca para construir interfaces de usuario.
+- Axios: Cliente HTTP para hacer peticiones a la API del backend.
+### Backend:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Express: Framework web para Node.js que facilita la creación de APIs.
+- Axios: Cliente HTTP para hacer peticiones a la API del backend.
+- Nodemon: Utilidad para reiniciar automáticamente el servidor en desarrollo cuando se realizan cambios en el código.

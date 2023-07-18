@@ -8,18 +8,15 @@
 }
 .container_list > .container_item_list {
   display: flex;
-  justify-content: center;
-}
-
-.container_list > .container_item_list > div {
+  background: var(--white);
   border-bottom: 1px solid var(--grey);
-  background-color: var(--white);
-  margin-bottom: 5px;
-  padding: 10px;
+  margin-bottom: 1px;
+  padding: 15px;
 }
-
+.container_list > .container_item_list > div {
+  padding: 5px;
+}
 .container_list > .container_item_list > div > img {
   width: 150px;
   height: 150px;
-  padding: 10px;
 }

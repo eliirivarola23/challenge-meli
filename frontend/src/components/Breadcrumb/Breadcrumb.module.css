@@ -1,11 +1,11 @@
 .container_breadcrumb {
-  padding: 15px;
   display: flex;
   justify-content: center;
-  font-size: 12px;
+  font-size: 14px;
 }
 .container_breadcrumb > div {
-  width: 655px;
+  width: 95%;
+  padding: 16px;
 }
 
 .container_breadcrumb > div > nav {
@@ -13,7 +13,7 @@
 }
 
 .container_breadcrumb > div > nav > a {
-  color: var(--blue);
+  color: var(--grey);
   border: none;
   text-decoration: none;
 }

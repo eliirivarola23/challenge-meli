@@ -10,13 +10,7 @@
 
 .secondary {
   border-radius: 0;
-  border-left: 1px solid var(--grey);
-  background-color: var(--white);
+  background-color: var(--greyLigth);
   color: var(--darkGray);
-}
-
-button:hover {
-  background-color: var(--grey);
-  outline: 1px solid var(--white);
-  color: var(--darkGray);
+  outline: none;
 }

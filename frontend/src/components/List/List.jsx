@@ -49,7 +49,7 @@ const List = () => {
 
   return (
     <>
-      <Breadcrumb crumbs={categories} />
+      {!loading && <Breadcrumb crumbs={categories} />}
       <div className={styles.container_principal_list}>
         <div className={styles.container_list}>
           <ContainerHeaderProductDetail loading={loading} searchParams={searchParams} data={data}>

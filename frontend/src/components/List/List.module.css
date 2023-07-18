@@ -1,22 +1,30 @@
 .container_principal_list {
   display: flex;
   justify-content: center;
-  padding: 15px;
 }
 .container_list {
-  max-width: 650px;
+  width: 95%;
 }
 .container_list > .container_item_list {
   display: flex;
   background: var(--white);
-  border-bottom: 1px solid var(--grey);
-  margin-bottom: 1px;
+  border-bottom: 1px solid var(--greyLight);
+  margin-bottom: 2px;
   padding: 15px;
+  flex-wrap: wrap;
 }
 .container_list > .container_item_list > div {
   padding: 5px;
 }
 .container_list > .container_item_list > div > img {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+.container_list > .container_item_list > div:nth-of-type(2) > p {
+  font-size: 19px;
+}
+.container_list > .container_item_list > div:nth-of-type(2) > h4 {
+  margin: 0;
+  font-size: 18px;
 }

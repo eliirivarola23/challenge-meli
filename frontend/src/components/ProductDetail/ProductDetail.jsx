@@ -13,7 +13,7 @@ const ProductDetail = ({ isView = false, picture, description, children, ...rest
       </div>
       {isView && description && (
         <div className={styles.productDetail_description}>
-          <h4>Descripción</h4>
+          <h5>Descripción</h5>
           <span>{description}</span>
         </div>
       )}

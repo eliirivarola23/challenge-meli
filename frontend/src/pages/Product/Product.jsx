@@ -33,7 +33,7 @@ const Product = () => {
 
   return (
     <>
-      <Breadcrumb crumbs={[]} />
+      {!loading && <Breadcrumb crumbs={[]} />}
       <div className={styles.container_product}>
         {loading && <CustomMessage />}
         {product && <ProductDetail isView {...product} />}

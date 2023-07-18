@@ -1,12 +1,11 @@
-import React from "react";
-import MenuHeader from "../../components/MenuHeader/MenuHeader";
-import List from "../../components/List/List";
+import { useSEOHeadData } from '../../hooks/useSEOHeadData';
 
 const Home = () => {
+  useSEOHeadData({ title: 'Home' });
+
   return (
     <>
-      <MenuHeader />
-      <List/>
+      <div style={{ textAlign: 'center', padding: '16px' }}>Realiza una busqueda para poder ver resultados</div>
     </>
   );
 };

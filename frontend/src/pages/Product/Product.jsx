@@ -1,17 +1,48 @@
-import React from "react";
-import ProductDetail from "../../components/ProductDetail";
-import MenuHeader from "../../components/MenuHeader";
-import Breadcrumb from "../../components/Breadcrumb";
-import { BREADCRUMBS_PRODUCT_DETAIL } from "./constants";
-import styles from "./Product.module.css";
+import React, { useEffect, useState } from 'react';
+import ProductDetail from '../../components/ProductDetail';
+import Breadcrumb from '../../components/Breadcrumb';
+import styles from './Product.module.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ProductService } from '../../services/ProductService';
+import CustomMessage from '../../components/CustomMessage';
+import Button from '../../components/Button';
+import { useSEOHeadData } from '../../hooks/useSEOHeadData';
 
 const Product = () => {
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState(null);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  useSEOHeadData({ title: loading ? 'Cargando...' : product?.title || '' });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { item } = await ProductService.searchProductDetail({ id });
+        setProduct(item);
+      } catch (error) {
+        if (error.error === 'NotFound') setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
+
+    return () => setProduct(null);
+  }, [id]);
+
   return (
     <>
-      <MenuHeader />
-      <Breadcrumb crumbs={BREADCRUMBS_PRODUCT_DETAIL} />
+      <Breadcrumb crumbs={[]} />
       <div className={styles.container_product}>
-        <ProductDetail isView />
+        {loading && <CustomMessage />}
+        {product && <ProductDetail isView {...product} />}
+        {!product && !loading && (
+          <>
+            <h3> {error}</h3>
+            <Button onClick={() => navigate(-1)}>Volver</Button>
+          </>
+        )}
       </div>
     </>
   );

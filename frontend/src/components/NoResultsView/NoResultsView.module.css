@@ -1,0 +1,23 @@
+.container_NoResultsView {
+  padding: 16px;
+  margin: 16px;
+  border-radius: 5px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.container_NoResultsView > img {
+  width: 80px;
+}
+
+.container_NoResultsView > .container_item_NoResultsView > ul {
+  padding-left: 15px;
+}
+
+@media (min-width: 752px) {
+  .container_NoResultsView {
+    flex-direction: row;
+  }
+}

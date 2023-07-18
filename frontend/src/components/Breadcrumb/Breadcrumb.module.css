@@ -13,7 +13,7 @@
 }
 
 .container_breadcrumb > div > nav > a {
-  color: var(--darkGray);
+  color: var(--blue);
   border: none;
   text-decoration: none;
 }

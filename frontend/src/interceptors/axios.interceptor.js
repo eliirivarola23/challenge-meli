@@ -1,39 +1,32 @@
-import axios from "axios";
-import { getValidationError } from "../helpers/get-validation-error";
-import { SnackbarUtilities } from "../helpers/snackbar-manager";
+import axios from 'axios';
+import { getValidationError } from '../helpers/get-validation-error';
+import { SnackbarUtilities } from '../helpers/snackbar-manager';
 
-export const AxiosInterceptor = async ({ endpoint, method, params,  }) => {
-  const updateHeader = (request) => {
-    const author = {
-      name: process.env.REACT_APP_API_KEY,
-      lastName: process.env.REACT_APP_SECRET_TOKEN,
-    };
-
+export const AxiosInterceptor = () => {
+  const updateHeader = request => {
     const newHeaders = {
-      Authorization: btoa(JSON.stringify(author)),
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     };
+
     request.headers = newHeaders;
     return request;
   };
 
-  axios.interceptors.request.use((request) => updateHeader(request));
+  axios.interceptors.request.use(request => updateHeader(request));
 
   axios.interceptors.response.use(
-    (response) => {
-      return response;
+    response => {
+      return response.data || response;
     },
-    (error) => {
-      const newErrors = getValidationError(error.code);
-      console.error(newErrors);
-      SnackbarUtilities.error(newErrors);
-      return error;
+    error => {
+      const errorCode = error.response?.data?.error || error.code;
+      const message = error.response?.data?.message || '';
+      if (errorCode) {
+        const newErrors = getValidationError(errorCode, message);
+        if (newErrors) SnackbarUtilities.error(newErrors);
+      }
+
+      throw error.response?.data || error;
     }
   );
-
-  await axios({
-    method: method,
-    url: `${process.env.REACT_APP_HOST}${endpoint}`,
-    data: params,
-  });
 };

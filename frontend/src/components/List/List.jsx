@@ -1,26 +1,65 @@
-import React, { useEffect } from "react";
-import { HeaderProductDetail } from "../ProductDetail/components/HeaderProductDetail";
-import MenuHeader from "../MenuHeader/MenuHeader";
-import styles from "./List.module.css";
-import { ProductSearch } from "../../services/ProductSearch";
+import React, { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import HeaderProductDetail from '../ProductDetail/components/HeaderProductDetail';
+import { ProductService } from '../../services/ProductService';
+import Breadcrumb from '../Breadcrumb';
+import { PublicRoutes } from '../../models/routes';
+import styles from './List.module.css';
+import { useSEOHeadData } from '../../hooks/useSEOHeadData';
+import ContainerHeaderProductDetail from './components/ContainerHeaderProductDetail';
+import CustomMessage from '../CustomMessage';
 
 const List = () => {
+  const location = useLocation();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const searchParams = useMemo(() => Object.fromEntries(new URLSearchParams(location.search)).search.replace('=', ''), [location.search]);
+  useSEOHeadData({ title: loading ? 'Cargando...' : searchParams?.trim() });
+
   useEffect(() => {
     (async () => {
-      await ProductSearch.createUser();
+      try {
+        setLoading(true);
+        const cleanLookupValue = searchParams?.trim();
+        const res = await ProductService.searchProducts({ q: cleanLookupValue });
+        setData(res);
+      } catch (error) {
+        setError('Hubo un error al realizar la búsqueda, intenta nuevamente');
+      } finally {
+        setLoading(false);
+      }
     })();
-    return () => {};
-  }, []);
+    return () => {
+      setData([]);
+      setError('');
+    };
+  }, [searchParams]);
+
+  const categories = useMemo(
+    () =>
+      data?.categories?.map(category => ({
+        path: `${PublicRoutes.LIST_OF_PRODUCTS}?search=${new URLSearchParams(category)}`,
+        label: category,
+      })) || [],
+    [data?.categories]
+  );
+
+  if (error) return <CustomMessage message={error} />;
 
   return (
     <>
-      {/* <MenuHeader /> */}
-      <div className={styles.container_list}>
-        {[1, 2, 3, 4, 5, 6].map((item, index) => (
-          <div key={index}>
-            <HeaderProductDetail photo="https://images.pexels.com/photos/3036882/pexels-photo-3036882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-          </div>
-        ))}
+      <Breadcrumb crumbs={categories} />
+      <div className={styles.container_principal_list}>
+        <div className={styles.container_list}>
+          <ContainerHeaderProductDetail loading={loading} searchParams={searchParams} data={data}>
+            {data?.items?.map(({ picture, title, price, id }) => (
+              <div className={styles.container_item_list} key={id}>
+                <HeaderProductDetail photo={picture} title={title} price={price} id={id} />
+              </div>
+            ))}
+          </ContainerHeaderProductDetail>
+        </div>
       </div>
     </>
   );

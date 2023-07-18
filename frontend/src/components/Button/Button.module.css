@@ -1,0 +1,19 @@
+.container_Button {
+  cursor: pointer;
+  border: none;
+  background: white;
+  color: var(--darkGray);
+  border-radius: 5px;
+  padding: 10px;
+  outline: 1px solid var(--grey);
+}
+
+.secondary {
+  border-radius: 0;
+  border-left: 1px solid var(--grey);
+}
+
+button:hover {
+  background-color: var(--grey);
+  outline: 1px solid var(--white);
+}

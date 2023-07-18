@@ -70,7 +70,7 @@
 }
 @media (min-width: 980px) {
   .productDetail_detail {
-    width: 33%;
+    width: 500px;
   }
   .productDetail_photo > img {
     width: 680px;

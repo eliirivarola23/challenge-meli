@@ -23,6 +23,11 @@
 }
 .container_list > .container_item_list > div:nth-of-type(2) > p {
   font-size: 19px;
+  display: flex;
+}
+.container_list > .container_item_list > div:nth-of-type(2) > p > img {
+  width: 28px;
+  margin-left: 5px;
 }
 .container_list > .container_item_list > div:nth-of-type(2) > h4 {
   margin: 0;

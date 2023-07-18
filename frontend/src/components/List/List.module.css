@@ -1,20 +1,24 @@
-.container_list {
+.container_principal_list {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  padding: 15px;
 }
-.container_list > div {
+.container_list {
+  max-width: 650px;
+}
+.container_list > .container_item_list {
   display: flex;
   justify-content: center;
 }
 
-.container_list > div > div {
+.container_list > .container_item_list > div {
   border-bottom: 1px solid var(--grey);
   background-color: var(--white);
   margin-bottom: 5px;
+  padding: 10px;
 }
 
-.container_list > div > div > img {
+.container_list > .container_item_list > div > img {
   width: 150px;
   height: 150px;
   padding: 10px;

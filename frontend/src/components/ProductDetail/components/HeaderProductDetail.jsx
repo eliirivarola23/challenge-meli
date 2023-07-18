@@ -1,20 +1,36 @@
-import React from "react";
-import styles from "../ProductDetail.module.css";
-import Button from "../../Button";
+import React, { memo } from 'react';
+import styles from '../ProductDetail.module.css';
+import Button from '../../Button';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { PublicRoutes } from '../../../models/routes';
 
-export const HeaderProductDetail = ({ photo, isView, children }) => {
+const HeaderProductDetail = ({ photo, id, price, title = '', isView, children }) => {
+  const navigate = useNavigate();
+  const locations = useLocation();
+
+  const handleNavigate = () => {
+    if (locations.pathname !== PublicRoutes.LIST_OF_PRODUCTS) return;
+    navigate(`${PublicRoutes.PRODUCT_DETAIL}${id}`, { state: { ...locations, label: 'Volver al Listado' } });
+  };
+
   return (
     <>
-      <div className={styles.productDetail_photo}>
-        <img src={photo} alt="imagen del producto" />
+      <div className={styles.productDetail_photo} onClick={handleNavigate}>
+        <img src={photo} alt={`imagen de ${title}`} />
       </div>
       <div className={styles.productDetail_detail}>
-        {isView && <p>Nuevo | 124 vendidos</p>}
-        <h4>Deco Reverse Sombrero Oxford</h4>
-        <p className={styles.productDetail_price}>$1980</p>
+        <h4 onClick={handleNavigate}>{title}</h4>
+
+        {price.decimals && (
+          <p className={styles.productDetail_price} onClick={handleNavigate}>
+            ${price.decimals}
+          </p>
+        )}
         {isView && <Button>Comprar</Button>}
         {children}
       </div>
     </>
   );
 };
+
+export default memo(HeaderProductDetail);

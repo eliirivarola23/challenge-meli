@@ -6,7 +6,7 @@ export const useHandleInput = ({ handleChangeSearch, handleSubmitSearch }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = useMemo(() => Object.fromEntries(new URLSearchParams(location.search))?.search?.replace('=', ''), [location.search]);
-  const [value, setvalue] = useState(searchParams || '');
+  const [value, setValue] = useState(searchParams || '');
 
   const navigateToList = () => {
     if (handleSubmitSearch) return handleSubmitSearch();
@@ -15,7 +15,7 @@ export const useHandleInput = ({ handleChangeSearch, handleSubmitSearch }) => {
 
   const handleChange = e => {
     const { value } = e.target;
-    setvalue(value);
+    setValue(value);
     if (handleChangeSearch) handleChangeSearch(e);
   };
 
@@ -28,7 +28,7 @@ export const useHandleInput = ({ handleChangeSearch, handleSubmitSearch }) => {
   };
 
   useEffect(() => {
-    setvalue(searchParams || '');
+    setValue(searchParams || '');
   }, [searchParams]);
 
   return { handleChange, handleSubmit, handleKeyPress, value };

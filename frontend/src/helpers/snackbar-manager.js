@@ -1,4 +1,4 @@
-import { useSnackbar } from "notistack";
+import { useSnackbar } from 'notistack';
 
 let useSnackbarRef;
 export const SnackbarUtilitiesConfigutator = () => {
@@ -11,10 +11,9 @@ export const SnackbarUtilities = {
     useSnackbarRef.enqueueSnackbar(message, { variant });
   },
   success(message) {
-    this.toast(message, "success");
+    this.toast(message, 'success');
   },
   error(message) {
-    this.toast(message, "error");
+    this.toast(message, 'error');
   },
- 
 };

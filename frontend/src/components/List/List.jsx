@@ -14,7 +14,7 @@ const List = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const searchParams = useMemo(() => Object.fromEntries(new URLSearchParams(location.search)).search.replace('=', ''), [location.search]);
+  const searchParams = useMemo(() => Object.fromEntries(new URLSearchParams(location.search)).search?.replace('=', ''), [location.search]);
   useSEOHeadData({ title: loading ? 'Cargando...' : searchParams?.trim() });
 
   useEffect(() => {

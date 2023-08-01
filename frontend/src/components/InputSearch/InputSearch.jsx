@@ -3,6 +3,7 @@ import styles from './Input.module.css';
 import Button from '../Button';
 import { useHandleInput } from './hooks/useHandleInput';
 import IconSearch from '../../assets/iconSearch.png';
+
 const InputSearch = ({ placeholder = 'Nunca dejes de buscar', name, label, handleChangeSearch, type, handleSubmitSearch }) => {
   const { handleChange, handleSubmit, handleKeyPress, value } = useHandleInput({ handleChangeSearch, handleSubmitSearch });
 
